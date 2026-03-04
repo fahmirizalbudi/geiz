@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en" style="font-size: 104%; scroll-behavior: smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GeizAdmin - Premium Admin Dashboard Template</title>
+    <meta name="keywords" content="Geiz Admin, geizadmin, admin dashboard template, tailwind admin, dashboard" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <meta name="description" content="A beautifully crafted admin dashboard template built with Tailwind CSS and Hugeicons. Clean design, responsive, and packed with components." />
+
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./assets/js/tailwind-config.js"></script>
+
+    <style type="text/tailwindcss">
+@layer utilities {
+  .section-label {
+    @apply inline-flex items-center gap-2 rounded-full bg-brand-50 px-2.5 py-1 text-[10.5px] font-bold uppercase tracking-wider text-brand-600;  }
+
+  .feature-card {
+    @apply rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium text-slate-600 transition-colors hover:text-brand-600;
+  }
+
+  @keyframes blob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(20px, -30px) scale(1.05); }
+    66% { transform: translate(-15px, 15px) scale(0.97); }
+  }
+
+  .animate-blob { animation: blob 8s ease-in-out infinite; }
+  .delay-2000 { animation-delay: 2s; }
+  .delay-4000 { animation-delay: 4s; }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up { opacity: 0; }
+  .fade-up.visible { animation: fade-up 0.6s ease-out forwards; }
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+  .delay-500 { animation-delay: 0.5s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .animate-float { animation: float 4s ease-in-out infinite; }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-glow {
+    background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(37, 99, 235, 0.12), transparent);
+  }
+}
+    </style>
+    <style>
+  html { scroll-padding-top: 80px; }
+
+  .nav-glass {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(6px);
+  }
+  
+  .nav-transparent {
+    background: transparent;
+  }
+
+  .preview-glow {
+    box-shadow:
+      0 0 0 1px rgba(37, 99, 235, 0.08),
+      0 20px 60px -10px rgba(37, 99, 235, 0.18),
+      0 4px 16px -2px rgba(0,0,0,0.08);
+  }
+
+  #mobileMenu { transition: max-height 0.3s ease, opacity 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
+  #mobileMenu.open { max-height: 400px; opacity: 1; }
+    </style>
+  </head>
+  <body class="bg-slate-50 font-sans text-slate-900 antialiased selection:bg-brand-100 selection:text-brand-900">
+
+    <nav id="navbar" class="nav-transparent fixed left-0 right-0 top-0 z-50 transition-all duration-300">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+        <a href="#" class="flex items-center gap-2.5">
+          <img src="./assets/svg/logo.svg" alt="GeizAdmin" class="h-11 w-11" />
+          <span class="text-xl font-extrabold tracking-tight text-slate-800">Geiz<span class="text-brand-600">Admin</span></span>
+        </a>
+
+        <div class="hidden items-center gap-8 md:flex">
+        </div>
+
+        <div class="hidden items-center gap-3 md:flex">
+          <a
+            href="https://github.com/fahmirizalbudi/geiz"
+            class="flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-brand-500/20 transition-all hover:bg-brand-700 active:scale-95"
+          >
+            <i class="hgi-stroke hgi-github text-base"></i>
+            Contribute
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero-glow relative overflow-hidden pb-0 pt-32 lg:pt-40">
+      <div class="animate-blob pointer-events-none absolute -left-32 top-20 h-96 w-96 rounded-full bg-brand-100 opacity-60 blur-3xl"></div>
+      <div class="animate-blob delay-2000 pointer-events-none absolute right-0 top-10 h-80 w-80 rounded-full bg-purple-100 opacity-50 blur-3xl"></div>
+      <div class="animate-blob delay-4000 pointer-events-none absolute bottom-0 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-sky-100 opacity-40 blur-3xl"></div>
+
+      <div class="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="flex justify-center">
+          <span class="section-label fade-up mb-6">
+            <i class="hgi-stroke hgi-sparkles text-sm"></i>
+            Open Source Dashboard Template
+          </span>
+        </div>
+
+        <h1 class="fade-up delay-100 mx-auto max-w-4xl text-center text-5xl font-bold leading-[1.1] tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
+          The Admin Dashboard<br />
+          <span class="gradient-text">Built to Impress</span>
+        </h1>
+
+        <p class="fade-up delay-200 mx-auto mt-6 max-w-2xl text-center text-lg text-slate-500">
+          GeizAdmin is a free, beautifully designed admin template built with Tailwind CSS and Hugeicons. Fully responsive, dark-mode ready, and packed with 7 pages and 80+ components.
+        </p>
+
+        <div class="fade-up delay-300 mt-10 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="dashboard/index.html"
+            class="flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-brand-500/25 transition-all hover:bg-brand-700 hover:shadow-brand-500/30 hover:shadow-xl active:scale-95"
+          >
+            <i class="hgi-stroke hgi-play text-lg"></i>
+            Live Demo
+          </a>
+          <a
+            href="#downloads"
+            class="flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm border border-slate-200 transition-all hover:bg-slate-50 hover:shadow-md active:scale-95"
+          >
+            <i class="hgi-stroke hgi-download-04 text-lg"></i>
+            Download Options
+          </a>
+        </div>
+
+        <div class="fade-up delay-400 mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+          <span class="flex items-center gap-1.5">
+            <i class="hgi-stroke hgi-checkmark-circle-01 text-emerald-500 text-base"></i>
+            Free & Open Source
+          </span>
+          <span class="flex items-center gap-1.5">
+            <i class="hgi-stroke hgi-checkmark-circle-01 text-emerald-500 text-base"></i>
+            MIT License
+          </span>
+          <span class="flex items-center gap-1.5">
+            <i class="hgi-stroke hgi-checkmark-circle-01 text-emerald-500 text-base"></i>
+            Fully Responsive
+          </span>
+        </div>
+
+        <div class="fade-up delay-500 relative mx-auto mt-16 max-w-5xl">
+          <div class="relative overflow-hidden rounded-t-3xl preview-glow shadow-2xl">
+            <img src="./preview.png" alt="GeizAdmin Dashboard Preview" class="h-auto w-full object-cover" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="downloads" class="bg-white py-24 border-t border-slate-100">
+      <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="mb-12 text-center fade-up">
+          <span class="section-label">Choose your stack</span>
+          <h2 class="mt-4 text-4xl font-extrabold tracking-tight text-slate-900">
+            Download GeizAdmin
+          </h2>
+          <p class="mt-4 text-lg text-slate-500">Available in multiple formats to fit your workflow.</p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div class="feature-card fade-up delay-100 flex flex-col">
+            <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-50 text-orange-600">
+              <img src="/assets/images/tailwind.png" alt="icon" class="h-10 w-10" />
+            </div>
+            <h3 class="mb-2 text-xl font-bold text-slate-900">HTML + Tailwind</h3>
+            <p class="mb-6 flex-1 text-sm text-slate-500">The core template. Open `index.html` in your browser and you're good to go. No npm install needed.</p>
+            <a href="https://github.com/fahmirizalbudi" target="_blank" class="flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50">
+              <i class="hgi-stroke hgi-download-04"></i> Get HTML Version
+            </a>
+          </div>
+
+          <div class="feature-card fade-up delay-200 flex flex-col">
+            <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-50 text-red-600">
+              <img src="/assets/images/laravel.png" alt="icon" class="h-10 w-10" />
+            </div>
+            <h3 class="mb-2 text-xl font-bold text-slate-900">Laravel Blade</h3>
+            <p class="mb-6 flex-1 text-sm text-slate-500">Pre-spilt Blade components and layouts. Ready to be integrated into your Laravel TALL stack.</p>
+            <a href="#" class="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-400 cursor-not-allowed">
+              <i class="hgi-stroke hgi-clock-01"></i> Coming Soon
+            </a>
+          </div>
+
+          <div class="feature-card fade-up delay-300 flex flex-col ring-2 ring-brand-500 ring-offset-2 relative overflow-hidden">
+            <div class="absolute right-0 top-0 rounded-bl-xl bg-brand-600 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white">Recommended</div>
+            <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
+              <img src="/assets/images/next.png" alt="icon" class="h-10 w-10" />
+            </div>
+            <h3 class="mb-2 text-xl font-bold text-slate-900">React (Next.js)</h3>
+            <p class="mb-6 flex-1 text-sm text-slate-500">Fully typed React components. Designed for Next.js App Router with separated UI components.</p>
+            <a href="#" class="flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-700">
+              <i class="hgi-stroke hgi-clock-01"></i> In Development
+            </a>
+          </div>
+
+          <div class="feature-card fade-up flex flex-col" style="animation-delay: 0.4s">
+            <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
+              <img src="/assets/images/nuxt.png" alt="icon" class="h-10 w-10" />
+            </div>
+            <h3 class="mb-2 text-xl font-bold text-slate-900">Vue 3 (Nuxt)</h3>
+            <p class="mb-6 flex-1 text-sm text-slate-500">Composition API ready Vue components for your Nuxt or Vite projects.</p>
+            <a href="#" class="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-50 px-4 py-2.5 text-sm font-semibold text-slate-400 cursor-not-allowed">
+              <i class="hgi-stroke hgi-clock-01"></i> Coming Soon
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-white py-12">
+      <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+          <div class="flex items-center gap-4">
+            <img
+              src="https://avatars.githubusercontent.com/u/92506093?v=4"
+              alt="Fahmirizal Budi Ramadhan"
+              class="h-12 w-12 rounded-full border border-slate-200 shadow-sm"
+            />
+            <div>
+              <h3 class="text-[15px] font-bold text-slate-900">Fahmirizal Budi Ramadhan</h3>
+              <p class="text-[13.5px] text-slate-500">Fullstack Developer</p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-center gap-4 text-sm font-medium text-slate-600">
+            <a href="mailto:me@fahmirizalbudi.dev" class="flex items-center gap-2 transition-colors hover:text-brand-600">
+              <i class="hgi-stroke hgi-mail-01 text-lg"></i>
+              Email
+            </a>
+            <span class="h-4 w-px bg-slate-200"></span>
+            <a href="https://github.com/fahmirizalbudi" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 transition-colors hover:text-brand-600">
+              <i class="hgi-stroke hgi-github text-lg"></i>
+              GitHub
+            </a>
+            <span class="h-4 w-px bg-slate-200"></span>
+            <a href="dashboard/index.html" class="flex items-center gap-2 transition-colors hover:text-brand-600">
+              <i class="hgi-stroke hgi-computer text-lg"></i>
+              Demo
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  navToggle?.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+
+  mobileMenu?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      navbar.classList.remove('nav-transparent');
+      navbar.classList.add('nav-glass');
+    } else {
+      navbar.classList.add('nav-transparent');
+      navbar.classList.remove('nav-glass');
+    }
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>

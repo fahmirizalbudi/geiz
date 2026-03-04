@@ -1,0 +1,18 @@
+<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Top and left arc of the 'G' -->
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M16 2.66666C8.6362 2.66666 2.66666 8.6362 2.66666 16C2.66666 23.3638 8.6362 29.3333 16 29.3333C23.3638 29.3333 29.3333 23.3638 29.3333 16H24C24 20.4183 20.4183 24 16 24C11.5817 24 8 20.4183 8 16C8 11.5817 11.5817 8 16 8C18.1506 8 20.103 8.8488 21.5435 10.2312L25.3333 6.44136C22.95 4.10343 19.6465 2.66666 16 2.66666Z" fill="url(#g-blue)"/>
+  
+  <!-- Right crossbar and bottom corner of the 'G' -->
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M16 13.3333V18.6667H26C25.5647 20.4674 24.6212 22.0673 23.3051 23.3197L27.0818 27.0964C29.288 24.3149 30.6667 20.806 30.6667 17C30.6667 15.7289 30.4851 14.5002 30.1457 13.3333H16Z" fill="url(#g-indigo)"/>
+  
+  <defs>
+    <linearGradient id="g-blue" x1="2" y1="2" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="g-indigo" x1="16" y1="13" x2="30" y2="28" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#818cf8"/>
+      <stop offset="1" stop-color="#4f46e5"/>
+    </linearGradient>
+  </defs>
+</svg>
