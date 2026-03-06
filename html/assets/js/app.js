@@ -1,12 +1,3 @@
-/**
- * GeizAdmin - Premium Admin Dashboard Template
- * Version: 1.0.0
- * Author: @fahmirizalbudi (https://github.com/fahmirizalbudi)
- * License: MIT
- * Description: Interactive UI controller for GeizAdmin dashboard.
- *              Handles sidebar toggle, dropdowns, modals, and responsive state.
- * GitHub: https://github.com/fahmirizalbudi/geiz
- */
 document.addEventListener('DOMContentLoaded', () => {
   // Dropdown Toggles
   const dropdownToggles = document.querySelectorAll('[data-dropdown-toggle]');
@@ -205,5 +196,28 @@ document.addEventListener('DOMContentLoaded', () => {
       backdrop.classList.add('opacity-0', 'pointer-events-none');
       document.body.style.overflow = '';
     }
+  });
+
+  // Theme Toggle Dark Mode
+  const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
+  
+  // Set initial theme
+  if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+
+  themeToggleBtns.forEach((btn) => {
+    btn.addEventListener('click', function() {
+      // Toggle theme in local storage and document class
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
   });
 });

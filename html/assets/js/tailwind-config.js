@@ -1,14 +1,6 @@
-/**
- * GeizAdmin - Premium Admin Dashboard Template
- * Version: 1.0.0
- * Author: @fahmirizalbudi (https://github.com/fahmirizalbudi)
- * License: MIT
- * Description: Interactive UI controller for GeizAdmin dashboard.
- *              Handles sidebar toggle, dropdowns, modals, and responsive state.
- * GitHub: https://github.com/fahmirizalbudi/geiz
- */
 // Tailwind CDN Configuration
 tailwind.config = {
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -25,6 +17,9 @@ tailwind.config = {
           900: '#1e3a8a',
           950: '#172554',
         },
+        'dark-bg': '#0a0a08',
+        'dark-card': '#141412',
+        'dark-hover': '#1c1c1a',
       },
       fontFamily: {
         sans: ['Figtree', 'system-ui', 'sans-serif'],
@@ -32,6 +27,7 @@ tailwind.config = {
       boxShadow: {
         soft: '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
         card: '0 0 0 1px rgba(0,0,0,0.03), 0 2px 8px rgba(0,0,0,0.04)',
+        'soft-dark': '0 4px 25px -2px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05)',
       },
       transitionProperty: {
         height: 'height',
