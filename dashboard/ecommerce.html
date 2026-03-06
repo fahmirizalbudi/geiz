@@ -28,15 +28,15 @@
   }
 
   .sidebar-link {
-    @apply flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 font-medium text-slate-600 transition-all duration-200 hover:bg-slate-100 hover:text-brand-600;
+    @apply flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 font-medium text-slate-600 transition-all duration-200 hover:bg-slate-100 hover:text-brand-600 dark:text-stone-400 dark:hover:bg-dark-hover dark:hover:text-brand-400;
   }
 
   .sidebar-link.active {
-    @apply bg-brand-50 font-semibold text-brand-600;
+    @apply bg-brand-50 font-semibold text-brand-600 dark:bg-brand-500/10 dark:text-brand-400;
   }
 
   .stat-card {
-    @apply cursor-pointer rounded-2xl bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-soft;
+    @apply cursor-pointer rounded-2xl bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-soft dark:bg-dark-card dark:border dark:border-transparent dark:shadow-soft-dark dark:hover:shadow-none;
   }
 
   /* Subtle Entrance Animations */
@@ -49,7 +49,6 @@
     position: fixed;
     inset: 0;
     z-index: 50 !important;
-      background-color: white !important;
     background: rgba(15, 23, 42, 0.5);
     backdrop-filter: blur(4px);
     transition: opacity 0.2s ease, visibility 0.2s ease;
@@ -247,7 +246,6 @@
       left: 0;
       height: 100vh !important;
       z-index: 50 !important;
-      background-color: white !important;
       transform: translateX(-100%);
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: 4px 0 24px rgba(0,0,0,0.12);
@@ -284,13 +282,36 @@
     }
   }
 
-    </style>
+        /* Sidebar Collapse Gaps & Dividers (Ultra Tight) */
+  aside.w-20 .flex.flex-col.gap-8 {
+    gap: 0.25rem !important; /* Extremely small gap between sections */
+  }
+  aside.w-20 .sidebar-text {
+    display: none !important; /* Remove titles from flow entirely */
+  }
+  aside.w-20 .space-y-2 {
+    space-y: 0 !important; /* Remove link spacing */
+  }
+  aside.w-20 .space-y-2 > * + * {
+    margin-top: 0.125rem !important; /* Tightest link stacking */
+  }
+  .sidebar-divider {
+    display: none;
+    margin: 0 auto;
+  }
+  aside.w-20 .sidebar-divider {
+    display: block;
+    padding: 0 !important;
+    margin: 0.25rem auto !important;
+  }
+
+</style>
   </head>
   <body
-    class="flex h-dvh w-full overflow-hidden bg-slate-50 font-sans text-slate-900 selection:bg-brand-100 selection:text-brand-900"
+    class="flex h-dvh w-full overflow-hidden bg-slate-50 font-sans text-slate-900 selection:bg-brand-100 selection:text-brand-900 dark:bg-dark-bg dark:text-stone-50 dark:selection:bg-brand-900/30 dark:selection:text-brand-100"
   >
     <!-- Sidebar Navigation -->
-    <aside id="sidebar" class="z-10 flex w-80 shrink-0 flex-col justify-between bg-white transition-all duration-300 ease-in-out">
+    <aside id="sidebar" class="z-10 flex w-80 shrink-0 flex-col justify-between bg-white border-r border-transparent transition-all duration-300 ease-in-out dark:border-transparent dark:bg-dark-bg">
       <div class="p-6">
         <!-- Logo area -->
         <div class="mb-10 flex cursor-pointer items-center gap-3 px-2">
@@ -299,15 +320,16 @@
             alt="GeizAdmin Logo"
             class="h-8 w-8 drop-shadow-sm transition-transform duration-300 hover:-translate-y-1"
           />
-          <span class="sidebar-text text-2xl font-extrabold tracking-tight text-slate-800 transition-opacity duration-300 whitespace-nowrap overflow-hidden">Geiz<span class="text-brand-600">Admin</span></span>
+          <span class="sidebar-text text-2xl font-extrabold tracking-tight text-slate-800 transition-opacity duration-300 whitespace-nowrap overflow-hidden dark:text-stone-100">Geiz<span class="text-brand-600 dark:text-brand-500">Admin</span></span>
         </div>
 
         <!-- Nav Links -->
         <div class="flex flex-col gap-8">
           <div class="space-y-2">
-            <p class="sidebar-text mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 transition-opacity duration-300 whitespace-nowrap overflow-hidden">
+            <p class="sidebar-text mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 transition-opacity duration-300 whitespace-nowrap overflow-hidden dark:text-stone-500">
               Overview
             </p>
+            <i class="hgi-stroke hgi-more-horizontal sidebar-divider text-xl text-slate-400 transition-opacity duration-300 dark:text-stone-500"></i>
             <a href="/dashboard/index.html" class="sidebar-link ">
               <i class="hgi-stroke hgi-home-01 text-lg"></i>
               <span class="sidebar-text transition-opacity duration-300 whitespace-nowrap overflow-hidden">Dashboard</span>
@@ -319,14 +341,15 @@
           </div>
 
           <div class="space-y-2">
-            <p class="sidebar-text mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 transition-opacity duration-300 whitespace-nowrap overflow-hidden">
+            <p class="sidebar-text mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 transition-opacity duration-300 whitespace-nowrap overflow-hidden dark:text-stone-500">
               Pages
             </p>
+            <i class="hgi-stroke hgi-more-horizontal sidebar-divider text-xl text-slate-400 transition-opacity duration-300 dark:text-stone-500"></i>
             <a href="/dashboard/ecommerce.html" class="sidebar-link active">
               <i class="hgi-stroke hgi-shopping-cart-01 text-lg"></i>
               <span class="sidebar-text transition-opacity duration-300 whitespace-nowrap overflow-hidden">E-Commerce</span>
               <span
-                class="new-badge ml-auto rounded-full bg-brand-100 px-2 py-0.5 text-[10px] font-bold text-brand-700 transition-opacity duration-300 whitespace-nowrap overflow-hidden"
+                class="new-badge ml-auto rounded-full bg-brand-100 px-2 py-0.5 text-[10px] font-bold text-brand-700 transition-opacity duration-300 whitespace-nowrap overflow-hidden dark:bg-brand-500/20 dark:text-brand-300 dark:bg-brand-500/20 dark:text-brand-300"
                 >NEW</span
               >
             </a>
@@ -345,9 +368,10 @@
           </div>
 
           <div class="space-y-2">
-            <p class="sidebar-text mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 transition-opacity duration-300 whitespace-nowrap overflow-hidden">
+            <p class="sidebar-text mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 transition-opacity duration-300 whitespace-nowrap overflow-hidden dark:text-stone-500">
               Components
             </p>
+            <i class="hgi-stroke hgi-more-horizontal sidebar-divider text-xl text-slate-400 transition-opacity duration-300 dark:text-stone-500"></i>
             <a href="/dashboard/components.html" class="sidebar-link ">
               <i class="hgi-stroke hgi-grid-view text-lg"></i>
               <span class="sidebar-text transition-opacity duration-300 whitespace-nowrap overflow-hidden">Components</span>
@@ -355,9 +379,10 @@
           </div>
 
           <div class="space-y-2">
-            <p class="sidebar-text mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 transition-opacity duration-300 whitespace-nowrap overflow-hidden">
+            <p class="sidebar-text mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 transition-opacity duration-300 whitespace-nowrap overflow-hidden dark:text-stone-500">
               Credits
             </p>
+            <i class="hgi-stroke hgi-more-horizontal sidebar-divider text-xl text-slate-400 transition-opacity duration-300 dark:text-stone-500"></i>
             <a href="/dashboard/credits.html" class="sidebar-link ">
               <i class="hgi-stroke hgi-certificate-01 text-lg"></i>
               <span class="sidebar-text transition-opacity duration-300 whitespace-nowrap overflow-hidden">Credits</span>
@@ -371,16 +396,16 @@
         <div class="relative cursor-pointer">
           <div
             data-dropdown-toggle="profileDropdown"
-            class="-mx-3 flex items-center gap-3 rounded-xl border border-transparent p-3 transition-all hover:border-slate-100 hover:bg-slate-50"
+            class="-mx-3 flex items-center gap-3 rounded-xl border border-transparent p-3 transition-all hover:border-slate-100 hover:bg-slate-50 dark:hover:border-transparent dark:hover:bg-dark-hover"
           >
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?_=20150327203541"
               alt="User Profile"
-              class="h-10 w-10 shrink-0 rounded-full border border-slate-200 shadow-sm"
+              class="h-10 w-10 shrink-0 rounded-full border border-slate-200 shadow-sm dark:border-transparent"
             />
             <div class="flex flex-1 flex-col">
-              <span class="text-sm font-bold text-slate-700">Administrator</span>
-              <span class="text-[13px] text-slate-400">Pro Plan</span>
+              <span class="text-sm font-bold text-slate-700 dark:text-stone-200">Administrator</span>
+              <span class="text-[13px] text-slate-400 dark:text-stone-500">Pro Plan</span>
             </div>
             <i class="hgi-stroke hgi-arrow-up-01 text-slate-400"></i>
           </div>
@@ -388,19 +413,19 @@
           <!-- Dropdown Menu -->
           <div
             id="profileDropdown"
-            class="dropdown-menu invisible absolute bottom-full left-0 z-50 mb-2 w-full translate-y-2 transform overflow-hidden rounded-xl border border-slate-100 bg-white opacity-0 shadow-xl transition-all duration-200"
+            class="dropdown-menu invisible absolute bottom-full left-0 z-50 mb-2 w-full translate-y-2 transform overflow-hidden rounded-xl border border-slate-100 bg-white opacity-0 shadow-xl transition-all duration-200 dark:border-transparent dark:bg-dark-card"
           >
             <div class="space-y-1 p-2">
               <a
                 href="#"
-                class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-brand-600"
+                class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-brand-600 dark:text-stone-300 dark:hover:bg-dark-hover dark:hover:text-brand-400"
               >
                 <i class="hgi-stroke hgi-settings-01 text-lg"></i>
                 <span class="sidebar-text transition-opacity duration-300 whitespace-nowrap overflow-hidden">Settings</span>
               </a>
               <a
                 href="#"
-                class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-red-50 hover:text-red-600"
+                class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-red-50 hover:text-red-600 dark:text-stone-300 dark:hover:bg-red-500/10 dark:hover:text-red-400"
               >
                 <i class="hgi-stroke hgi-logout-01 text-lg"></i>
                 <span class="sidebar-text transition-opacity duration-300 whitespace-nowrap overflow-hidden">Logout</span>
@@ -420,12 +445,12 @@
 
       <!-- Top Header -->
       <header
-        class="z-20 mx-3 mt-4 flex min-h-14 shrink-0 items-center justify-between rounded-2xl border border-slate-100 bg-white px-4 shadow-sm sm:mx-6 sm:mt-6 sm:min-h-16 sm:px-6 md:mx-10"
+        class="z-20 mx-3 mt-4 flex min-h-14 shrink-0 items-center justify-between rounded-2xl border border-slate-100 bg-white px-4 shadow-sm sm:mx-6 sm:mt-6 sm:min-h-16 sm:px-6 md:mx-10 dark:border-transparent dark:bg-dark-card"
       >
         <!-- Sidebar Toggle -->
         <div class="flex items-center">
           <button
-            class="mobile-menu-toggle rounded-lg text-slate-500 transition-colors hover:bg-slate-100"
+            class="mobile-menu-toggle rounded-lg text-slate-500 transition-colors hover:bg-slate-100 dark:hover:bg-dark-hover"
           >
             <i class="hgi-stroke hgi-menu-05 text-xl"></i>
           </button>
@@ -441,73 +466,77 @@
             <input
               type="text"
               placeholder="Search anything..."
-              class="w-64 rounded-xl border-none bg-slate-100/50 py-2.5 pl-10 pr-4 text-sm font-medium text-slate-700 transition-all placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500"
+              class="w-64 rounded-xl border-none bg-slate-100/50 py-2.5 pl-10 pr-4 text-sm font-medium text-slate-700 transition-all placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 dark:bg-dark-hover dark:text-stone-200 dark:focus:bg-dark-hover"
             />
             <div class="absolute right-3 top-1/2 flex -translate-y-1/2 items-center gap-1">
               <kbd
-                class="hidden rounded border border-slate-300 bg-slate-200 px-1.5 py-0.5 text-[10px] font-bold text-slate-500 sm:inline-block"
+                class="hidden rounded border border-slate-300 bg-slate-200 px-1.5 py-0.5 text-[10px] font-bold text-slate-500 sm:inline-block dark:border-transparent dark:bg-dark-hover dark:text-stone-400"
                 >⌘</kbd
               >
               <kbd
-                class="hidden rounded border border-slate-300 bg-slate-200 px-1.5 py-0.5 text-[10px] font-bold text-slate-500 sm:inline-block"
+                class="hidden rounded border border-slate-300 bg-slate-200 px-1.5 py-0.5 text-[10px] font-bold text-slate-500 sm:inline-block dark:border-transparent dark:bg-dark-hover dark:text-stone-400"
                 >K</kbd
               >
             </div>
           </div>
 
-          <div class="hidden h-6 w-px bg-slate-200 sm:block"></div>
+        <div class="hidden h-6 w-px bg-slate-200 sm:block dark:bg-dark-hover"></div>
 
           <!-- Icons -->
+          <button class="theme-toggle-btn cursor-pointer p-1 text-slate-500 transition-colors hover:text-slate-800 dark:text-stone-400 dark:hover:text-stone-200">
+            <i class="hgi-stroke hgi-moon-02 text-2xl dark:hidden"></i>
+            <i class="hgi-stroke hgi-sun-03 text-2xl hidden dark:block"></i>
+          </button>
           <div class="group relative">
             <button
-              class="relative cursor-pointer p-1 text-slate-500 transition-colors hover:text-slate-800"
+              class="relative cursor-pointer p-1 text-slate-500 transition-colors hover:text-slate-800 dark:hover:text-stone-300"
             >
               <span
-                class="absolute right-0 top-0 h-2 w-2 rounded-full border-2 border-white bg-red-500"
+                class="absolute right-0 top-0 h-2 w-2 rounded-full border-2 border-white bg-red-500 dark:border-transparent"
               ></span>
               <i class="hgi-stroke hgi-notification-01 text-2xl"></i>
             </button>
             <!-- Dropdown Menu -->
             <div
-              class="invisible absolute right-0 z-[100] mt-3 w-80 origin-top-right translate-y-2 transform rounded-2xl border border-slate-100 bg-white opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
+              class="invisible absolute right-0 z-[100] mt-3 w-80 origin-top-right translate-y-2 transform rounded-2xl border border-slate-100 bg-white opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 dark:border-transparent dark:bg-dark-card"
             >
-              <div class="flex items-center justify-between border-b border-slate-100 p-4">
-                <h3 class="font-bold text-slate-800">Notifications</h3>
-                <button class="text-xs font-semibold text-brand-600 hover:text-brand-700">
+              <div class="flex items-center justify-between border-b border-slate-100 p-4 dark:border-transparent">
+                <h3 class="font-bold text-slate-800 dark:text-stone-100">Notifications</h3>
+                <button class="text-xs font-semibold text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300">
                   Mark all as read
                 </button>
               </div>
               <div class="max-h-80 overflow-y-auto">
                 <a
                   href="#"
-                  class="flex items-start gap-4 border-b border-slate-50 p-4 transition-colors hover:bg-slate-50"
+                  class="flex items-start gap-4 border-b border-slate-50 p-4 transition-colors hover:bg-slate-50 dark:border-transparent dark:hover:bg-dark-hover"
                 >
                   <div
-                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600"
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600 dark:bg-brand-500/10 dark:text-brand-400"
                   >
                     <i class="hgi-stroke hgi-user text-lg"></i>
                   </div>
                   <div>
-                    <p class="text-sm font-medium text-slate-800">New customer signed up</p>
-                    <p class="mt-0.5 text-xs text-slate-500">Alex Morgan joined the pro plan.</p>
-                    <p class="mt-1 text-[10px] font-semibold text-slate-400">2 MINS AGO</p>
+                    <p class="text-sm font-medium text-slate-800 dark:text-stone-200">New customer signed up</p>
+                    <p class="mt-0.5 text-xs text-slate-500 dark:text-stone-400">Alex Morgan joined the pro plan.</p>
+                    <p class="mt-1 text-[10px] font-semibold text-slate-400 dark:text-stone-500">2 MINS AGO</p>
                   </div>
                 </a>
-                <a href="#" class="flex items-start gap-4 p-4 transition-colors hover:bg-slate-50">
+                <a href="#" class="flex items-start gap-4 p-4 transition-colors hover:bg-slate-50 dark:hover:bg-dark-hover">
                   <div
-                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600"
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400"
                   >
                     <i class="hgi-stroke hgi-tick-double-02 text-lg"></i>
                   </div>
                   <div>
-                    <p class="text-sm font-medium text-slate-800">Project "Alpha" completed</p>
-                    <p class="mt-1 text-[10px] font-semibold text-slate-400">YESTERDAY</p>
+                    <p class="text-sm font-medium text-slate-800 dark:text-stone-200">Project "Alpha" completed</p>
+                    <p class="mt-1 text-[10px] font-semibold text-slate-400 dark:text-stone-500">YESTERDAY</p>
                   </div>
                 </a>
               </div>
-              <div class="border-t border-slate-100 p-3 text-center">
+              <div class="border-t border-slate-100 p-3 text-center dark:border-transparent">
                 <button
-                  class="text-sm font-semibold text-slate-600 transition-colors hover:text-slate-900"
+                  class="text-sm font-semibold text-slate-600 transition-colors hover:text-slate-900 dark:text-stone-400 dark:hover:text-stone-200"
                 >
                   View all notifications
                 </button>
@@ -516,7 +545,7 @@
           </div>
           <button
             data-sheet-target="chatSheet"
-            class="cursor-pointer p-1 text-slate-500 transition-colors hover:text-slate-800"
+            class="cursor-pointer p-1 text-slate-500 transition-colors hover:text-slate-800 dark:hover:text-stone-300"
           >
             <i class="hgi-stroke hgi-message-01 text-2xl"></i>
           </button>
@@ -529,22 +558,22 @@
           <!-- Page Header & Breadcrumbs -->
           <div class="animate-fade-in delay-1 mb-2 flex flex-col gap-1">
             <nav class="mb-1 flex items-center gap-2 text-sm font-medium text-slate-500">
-              <a href="/dashboard/index.html" class="flex items-center transition-colors hover:text-brand-600">
+              <a href="/dashboard/index.html" class="flex items-center transition-colors hover:text-brand-600 dark:hover:text-brand-400">
                 <i class="hgi-stroke hgi-home-01 text-lg"></i>
               </a>
               <i class="hgi-stroke hgi-arrow-right-01 text-sm opacity-50"></i>
-              <a href="/dashboard/ecommerce.html" class="transition-colors hover:text-brand-600">Overview</a>
+              <a href="/dashboard/ecommerce.html" class="transition-colors hover:text-brand-600 dark:hover:text-brand-400">Overview</a>
               <i class="hgi-stroke hgi-arrow-right-01 text-sm opacity-50"></i>
-              <span class="font-semibold text-slate-800">E-Commerce</span>
+              <span class="font-semibold text-slate-800 dark:text-stone-200">E-Commerce</span>
             </nav>
             <div class="mt-1 flex flex-wrap items-start justify-between gap-3">
               <div>
-                <h1 class="text-2xl font-bold tracking-tight text-slate-900">Product Catalog</h1>
-                <p class="text-sm text-slate-500">Manage products, inventory, and recent orders.</p>
+                <h1 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-stone-100">Product Catalog</h1>
+                <p class="text-sm text-slate-500 dark:text-stone-400">Manage products, inventory, and recent orders.</p>
               </div>
               <button
                 data-modal-target="addProductModal"
-                class="flex h-10 items-center gap-2 rounded-xl bg-brand-600 px-3 text-sm font-semibold text-white shadow-md shadow-brand-500/20 transition-all hover:bg-brand-700 active:scale-95 sm:px-4"
+                class="flex h-10 items-center gap-2 rounded-xl bg-brand-600 px-3 text-sm font-semibold text-white shadow-md shadow-brand-500/20 transition-all hover:bg-brand-700 active:scale-95 sm:px-4 dark:bg-brand-500 dark:hover:bg-brand-600 dark:shadow-soft-dark"
               >
                 <i class="hgi-stroke hgi-add-01 text-lg"></i>
                 <span>New Product</span>
@@ -554,10 +583,10 @@
 
           <!-- E-commerce List -->
           <div
-            class="animate-fade-in delay-2 overflow-hidden rounded-2xl bg-white opacity-0 shadow-card"
+            class="animate-fade-in delay-2 overflow-hidden rounded-2xl bg-white opacity-0 shadow-card dark:bg-dark-card dark:border dark:border-transparent dark:shadow-soft-dark"
           >
             <div
-              class="flex flex-col items-center justify-between gap-4 border-b border-slate-100 bg-white p-6 sm:flex-row"
+              class="flex flex-col items-center justify-between gap-4 border-b border-slate-100 bg-white p-6 sm:flex-row dark:border-transparent dark:bg-dark-card"
             >
               <div class="flex w-full gap-3 sm:w-auto">
                 <div class="relative w-full sm:w-72">
@@ -567,18 +596,18 @@
                   <input
                     type="text"
                     placeholder="Search products..."
-                    class="h-10 w-full rounded-xl border border-slate-200 bg-white pl-10 pr-4 text-sm text-slate-700 transition-all placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500"
+                    class="h-10 w-full rounded-xl border border-slate-200 bg-white pl-10 pr-4 text-sm text-slate-700 transition-all placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-transparent dark:bg-dark-hover dark:text-stone-200"
                   />
                 </div>
               </div>
               <div class="flex items-center gap-2">
                 <button
-                  class="h-10 rounded-xl border border-slate-200 bg-white px-3 text-sm font-medium text-slate-600 transition-all hover:bg-slate-50"
+                  class="h-10 rounded-xl border border-slate-200 bg-white px-3 text-sm font-medium text-slate-600 transition-all hover:bg-slate-50 dark:border-transparent dark:bg-dark-hover dark:text-stone-300 dark:hover:bg-dark-hover dark:hover:text-white"
                 >
                   Category
                 </button>
                 <button
-                  class="h-10 rounded-xl border border-slate-200 bg-white px-3 text-sm font-medium text-slate-600 transition-all hover:bg-slate-50"
+                  class="h-10 rounded-xl border border-slate-200 bg-white px-3 text-sm font-medium text-slate-600 transition-all hover:bg-slate-50 dark:border-transparent dark:bg-dark-hover dark:text-stone-300 dark:hover:bg-dark-hover dark:hover:text-white"
                 >
                   Price: Low to High
                 </button>
@@ -590,7 +619,7 @@
             <table class="w-full border-collapse text-left">
                 <thead>
                   <tr
-                    class="border-b border-slate-100 bg-white text-xs font-semibold uppercase tracking-wider text-slate-500"
+                    class="border-b border-slate-100 bg-white text-xs font-semibold uppercase tracking-wider text-slate-500 dark:border-transparent dark:bg-dark-card/50 dark:text-stone-400"
                   >
                     <th class="px-6 py-4">Product Name</th>
                     <th class="px-6 py-4">SKU</th>
@@ -599,47 +628,47 @@
                     <th class="px-6 py-4 text-right">Action</th>
                   </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-100">
+                <tbody class="divide-y divide-slate-100 dark:divide-stone-800">
                   <!-- Row 1 -->
-                  <tr class="group bg-white transition-colors hover:bg-slate-50">
+                  <tr class="group bg-white transition-colors hover:bg-slate-50 dark:bg-dark-card dark:hover:bg-dark-hover">
                     <td class="px-6 py-4">
                       <div class="flex items-center gap-3">
                         <div
-                          class="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 text-slate-400"
+                          class="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 text-slate-400 dark:bg-dark-hover dark:text-stone-500"
                         >
                           <i class="hgi-stroke hgi-headphones text-2xl"></i>
                         </div>
                         <div>
                           <div
-                            class="text-sm font-bold text-slate-800 transition-colors group-hover:text-brand-600"
+                            class="text-sm font-bold text-slate-800 transition-colors group-hover:text-brand-600 dark:text-stone-200 dark:group-hover:text-brand-400"
                           >
                             Wireless Headphones Max
                           </div>
-                          <div class="text-xs text-slate-500">Electronics</div>
+                          <div class="text-xs text-slate-500 dark:text-stone-400">Electronics</div>
                         </div>
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="text-sm font-medium text-slate-600">WH-992-BLK</span>
+                      <span class="text-sm font-medium text-slate-600 dark:text-stone-400">WH-992-BLK</span>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="text-sm font-bold text-slate-800">$299.00</span>
+                      <span class="text-sm font-bold text-slate-800 dark:text-stone-200">$299.00</span>
                     </td>
                     <td class="px-6 py-4">
                       <span
-                        class="inline-flex items-center gap-1.5 rounded-full border border-emerald-100 bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700"
+                        class="inline-flex items-center gap-1.5 rounded-full border border-emerald-100 bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400"
                       >
                         <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span> In Stock (42)
                       </span>
                     </td>
                     <td class="px-6 py-4 text-right">
                       <button
-                        class="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-brand-50 hover:text-brand-600"
+                        class="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-brand-50 hover:text-brand-600 dark:hover:bg-brand-500/10 dark:hover:text-brand-400"
                       >
                         <i class="hgi-stroke hgi-edit-02 text-xl"></i>
                       </button>
                       <button
-                        class="ml-1 rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-500"
+                        class="ml-1 rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-500/10 dark:hover:text-red-400"
                       >
                         <i class="hgi-stroke hgi-delete-02 text-xl"></i>
                       </button>
@@ -647,45 +676,45 @@
                   </tr>
 
                   <!-- Row 2 -->
-                  <tr class="group bg-white transition-colors hover:bg-slate-50">
+                  <tr class="group bg-white transition-colors hover:bg-slate-50 dark:bg-dark-card dark:hover:bg-dark-hover">
                     <td class="px-6 py-4">
                       <div class="flex items-center gap-3">
                         <div
-                          class="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 text-slate-400"
+                          class="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 text-slate-400 dark:bg-dark-hover dark:text-stone-500"
                         >
                           <i class="hgi-stroke hgi-smart-watch-01 text-2xl"></i>
                         </div>
                         <div>
                           <div
-                            class="text-sm font-bold text-slate-800 transition-colors group-hover:text-brand-600"
+                            class="text-sm font-bold text-slate-800 transition-colors group-hover:text-brand-600 dark:text-stone-200 dark:group-hover:text-brand-400"
                           >
                             Smart Watch Series 8
                           </div>
-                          <div class="text-xs text-slate-500">Wearables</div>
+                          <div class="text-xs text-slate-500 dark:text-stone-400">Wearables</div>
                         </div>
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="text-sm font-medium text-slate-600">SW-881-SLV</span>
+                      <span class="text-sm font-medium text-slate-600 dark:text-stone-400">SW-881-SLV</span>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="text-sm font-bold text-slate-800">$399.00</span>
+                      <span class="text-sm font-bold text-slate-800 dark:text-stone-200">$399.00</span>
                     </td>
                     <td class="px-6 py-4">
                       <span
-                        class="inline-flex items-center gap-1.5 rounded-full border border-rose-100 bg-rose-50 px-2.5 py-1 text-xs font-semibold text-rose-700"
+                        class="inline-flex items-center gap-1.5 rounded-full border border-rose-100 bg-rose-50 px-2.5 py-1 text-xs font-semibold text-rose-700 dark:border-rose-500/20 dark:bg-rose-500/10 dark:text-rose-400"
                       >
                         <span class="h-1.5 w-1.5 rounded-full bg-rose-500"></span> Low Stock (3)
                       </span>
                     </td>
                     <td class="px-6 py-4 text-right">
                       <button
-                        class="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-brand-50 hover:text-brand-600"
+                        class="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-brand-50 hover:text-brand-600 dark:hover:bg-brand-500/10 dark:hover:text-brand-400"
                       >
                         <i class="hgi-stroke hgi-edit-02 text-xl"></i>
                       </button>
                       <button
-                        class="ml-1 rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-500"
+                        class="ml-1 rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-500/10 dark:hover:text-red-400"
                       >
                         <i class="hgi-stroke hgi-delete-02 text-xl"></i>
                       </button>
@@ -693,45 +722,45 @@
                   </tr>
 
                   <!-- Row 3 -->
-                  <tr class="group bg-white transition-colors hover:bg-slate-50">
+                  <tr class="group bg-white transition-colors hover:bg-slate-50 dark:bg-dark-card dark:hover:bg-dark-hover">
                     <td class="px-6 py-4">
                       <div class="flex items-center gap-3">
                         <div
-                          class="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 text-slate-400"
+                          class="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 text-slate-400 dark:bg-dark-hover dark:text-stone-500"
                         >
                           <i class="hgi-stroke hgi-laptop text-2xl"></i>
                         </div>
                         <div>
                           <div
-                            class="text-sm font-bold text-slate-800 transition-colors group-hover:text-brand-600"
+                            class="text-sm font-bold text-slate-800 transition-colors group-hover:text-brand-600 dark:text-stone-200 dark:group-hover:text-brand-400"
                           >
                             ProBook Studio 15"
                           </div>
-                          <div class="text-xs text-slate-500">Computers</div>
+                          <div class="text-xs text-slate-500 dark:text-stone-400">Computers</div>
                         </div>
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="text-sm font-medium text-slate-600">PB-15S-M2</span>
+                      <span class="text-sm font-medium text-slate-600 dark:text-stone-400">PB-15S-M2</span>
                     </td>
                     <td class="px-6 py-4">
-                      <span class="text-sm font-bold text-slate-800">$1,299.00</span>
+                      <span class="text-sm font-bold text-slate-800 dark:text-stone-200">$1,299.00</span>
                     </td>
                     <td class="px-6 py-4">
                       <span
-                        class="inline-flex items-center gap-1.5 rounded-full border border-emerald-100 bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700"
+                        class="inline-flex items-center gap-1.5 rounded-full border border-emerald-100 bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400"
                       >
                         <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span> In Stock (120)
                       </span>
                     </td>
                     <td class="px-6 py-4 text-right">
                       <button
-                        class="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-brand-50 hover:text-brand-600"
+                        class="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-brand-50 hover:text-brand-600 dark:hover:bg-brand-500/10 dark:hover:text-brand-400"
                       >
                         <i class="hgi-stroke hgi-edit-02 text-xl"></i>
                       </button>
                       <button
-                        class="ml-1 rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-500"
+                        class="ml-1 rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-500/10 dark:hover:text-red-400"
                       >
                         <i class="hgi-stroke hgi-delete-02 text-xl"></i>
                       </button>
@@ -742,25 +771,25 @@
             </div>
             </div>
 
-            <div class="flex justify-end border-t border-slate-100 bg-white p-5">
+            <div class="flex justify-end border-t border-slate-100 bg-white p-5 dark:border-transparent dark:bg-dark-card">
               <div class="flex items-center gap-1">
                 <button
-                  class="flex h-8 w-8 items-center justify-center rounded-lg text-sm font-medium text-slate-500 transition-colors hover:bg-slate-50"
+                  class="flex h-8 w-8 items-center justify-center rounded-lg text-sm font-medium text-slate-500 transition-colors hover:bg-slate-50 dark:text-stone-400 dark:hover:bg-dark-hover"
                 >
                   <i class="hgi-stroke hgi-arrow-left-01 text-lg"></i>
                 </button>
                 <button
-                  class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-sm font-bold text-brand-600"
+                  class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-sm font-bold text-brand-600 dark:bg-brand-500/20 dark:text-brand-400"
                 >
                   1
                 </button>
                 <button
-                  class="flex h-8 w-8 items-center justify-center rounded-lg text-sm font-medium text-slate-500 transition-colors hover:bg-slate-50"
+                  class="flex h-8 w-8 items-center justify-center rounded-lg text-sm font-medium text-slate-500 transition-colors hover:bg-slate-50 dark:text-stone-400 dark:hover:bg-dark-hover"
                 >
                   2
                 </button>
                 <button
-                  class="flex h-8 w-8 items-center justify-center rounded-lg text-sm font-medium text-slate-500 transition-colors hover:bg-slate-50"
+                  class="flex h-8 w-8 items-center justify-center rounded-lg text-sm font-medium text-slate-500 transition-colors hover:bg-slate-50 dark:text-stone-400 dark:hover:bg-dark-hover"
                 >
                   <i class="hgi-stroke hgi-arrow-right-01 text-lg"></i>
                 </button>
@@ -783,24 +812,24 @@
     >
       <!-- Backdrop -->
       <div
-        class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity"
+        class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity dark:bg-dark-card/60"
         data-modal-close
       ></div>
 
       <!-- Modal Content -->
       <div
-        class="modal-dialog relative w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl"
+        class="modal-dialog relative w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-dark-card dark:border dark:border-transparent"
       >
-        <div class="flex items-center justify-between border-b border-slate-100 bg-slate-50/50 p-6">
+        <div class="flex items-center justify-between border-b border-slate-100 bg-slate-50/50 p-6 dark:border-transparent dark:bg-dark-card/50">
           <div class="flex items-center gap-3">
             <div
-              class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-600"
+              class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-600 dark:bg-brand-500/20 dark:text-brand-400"
             >
               <i class="hgi-stroke hgi-shopping-cart-01 text-xl"></i>
             </div>
             <div>
-              <h3 class="text-lg font-bold text-slate-800">Add Product</h3>
-              <p class="text-xs text-slate-500">Create a new product listing</p>
+              <h3 class="text-lg font-bold text-slate-800 dark:text-stone-100">Add Product</h3>
+              <p class="text-xs text-slate-500 dark:text-stone-400">Create a new product listing</p>
             </div>
           </div>
           <button data-modal-close class="text-slate-400 transition-colors hover:text-slate-700">
@@ -816,20 +845,20 @@
           "
         >
           <div>
-            <label class="mb-1.5 block text-sm font-semibold text-slate-700">Product Name *</label>
+            <label class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-stone-300">Product Name *</label>
             <input
               type="text"
               required
               placeholder="e.g. Wireless Keyboard"
-              class="h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500"
+              class="h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-transparent dark:bg-dark-hover dark:text-stone-200"
             />
           </div>
 
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="mb-1.5 block text-sm font-semibold text-slate-700">Category</label>
+              <label class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-stone-300">Category</label>
               <select
-                class="h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500"
+                class="h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-transparent dark:bg-dark-hover dark:text-stone-200"
               >
                 <option>Electronics</option>
                 <option>Wearables</option>
@@ -837,39 +866,39 @@
               </select>
             </div>
             <div>
-              <label class="mb-1.5 block text-sm font-semibold text-slate-700">Price ($) *</label>
+              <label class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-stone-300">Price ($) *</label>
               <input
                 type="number"
                 required
                 placeholder="0.00"
-                class="h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500"
+                class="h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-transparent dark:bg-dark-hover dark:text-stone-200"
               />
             </div>
             <div>
-              <label class="mb-1.5 block text-sm font-semibold text-slate-700">Stock Count *</label>
+              <label class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-stone-300">Stock Count *</label>
               <input
                 type="number"
                 required
                 placeholder="0"
-                class="h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500"
+                class="h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-transparent dark:bg-dark-hover dark:text-stone-200"
               />
             </div>
             <div>
-              <label class="mb-1.5 block text-sm font-semibold text-slate-700">SKU *</label>
+              <label class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-stone-300">SKU *</label>
               <input
                 type="text"
                 required
                 placeholder="e.g. WH-992-BLK"
-                class="h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500"
+                class="h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-transparent dark:bg-dark-hover dark:text-stone-200"
               />
             </div>
           </div>
 
-          <div class="mt-6 flex justify-end gap-3 border-t border-slate-100 pt-4">
+          <div class="mt-6 flex justify-end gap-3 border-t border-slate-100 pt-4 dark:border-transparent">
             <button
               type="button"
               data-modal-close
-              class="h-11 rounded-xl border border-slate-200 px-5 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-50"
+              class="h-11 rounded-xl border border-slate-200 px-5 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-50 dark:border-transparent dark:text-stone-300 dark:hover:bg-dark-hover"
             >
               Cancel
             </button>
@@ -887,14 +916,14 @@
     <!-- Chat Sheet -->
     <div id="chatSheet" class="fixed inset-0 z-[100] hidden">
       <div
-        class="absolute inset-0 bg-slate-900/20 backdrop-blur-sm transition-opacity"
+        class="absolute inset-0 bg-slate-900/20 backdrop-blur-sm transition-opacity dark:bg-dark-card/60"
         data-sheet-close
       ></div>
       <div
-        class="absolute bottom-0 right-0 top-0 flex w-full max-w-sm translate-x-full transform flex-col bg-white shadow-2xl transition-transform duration-300 ease-out"
+        class="absolute bottom-0 right-0 top-0 flex w-full max-w-sm translate-x-full transform flex-col bg-white shadow-2xl transition-transform duration-300 ease-out dark:bg-dark-card dark:border-l dark:border-transparent"
         id="chatSheetContent"
       >
-        <div class="z-10 flex items-center justify-between border-b border-slate-100 bg-white p-6">
+        <div class="z-10 flex items-center justify-between border-b border-slate-100 bg-white p-6 dark:border-transparent dark:bg-dark-card">
           <div class="flex items-center gap-3">
             <div class="relative">
               <img
@@ -907,25 +936,25 @@
               ></span>
             </div>
             <div>
-              <h3 class="font-bold text-slate-800">Sarah Connor</h3>
-              <p class="text-xs font-medium text-emerald-600">Online</p>
+              <h3 class="font-bold text-slate-800 dark:text-stone-100">Sarah Connor</h3>
+              <p class="text-xs font-medium text-emerald-600 dark:text-emerald-400">Online</p>
             </div>
           </div>
           <button data-sheet-close class="text-slate-400 transition-colors hover:text-slate-700">
             <i class="hgi-stroke hgi-cancel-01 text-lg"></i>
           </button>
         </div>
-        <div class="flex-1 space-y-4 overflow-y-auto bg-slate-50/50 p-6">
-          <div class="my-4 text-center text-xs font-semibold text-slate-400">TODAY, 9:24 AM</div>
+        <div class="flex-1 space-y-4 overflow-y-auto bg-slate-50/50 p-6 dark:bg-dark-bg/50">
+          <div class="my-4 text-center text-xs font-semibold text-slate-400 dark:text-stone-500">TODAY, 9:24 AM</div>
           <div class="flex gap-3">
             <img
               src="https://i.pravatar.cc/150?img=32"
               alt="Sarah"
               class="h-8 w-8 shrink-0 rounded-full"
             />
-            <div class="rounded-2xl rounded-tl-sm border border-slate-100 bg-white p-3 shadow-sm">
-              <p class="text-sm text-slate-700">Hey! Did you check the latest analytics report?</p>
-              <p class="mt-1 text-right text-[10px] text-slate-400">9:24 AM</p>
+            <div class="rounded-2xl rounded-tl-sm border border-slate-100 bg-white p-3 shadow-sm dark:border-transparent dark:bg-dark-card">
+              <p class="text-sm text-slate-700 dark:text-stone-300">Hey! Did you check the latest analytics report?</p>
+              <p class="mt-1 text-right text-[10px] text-slate-400 dark:text-stone-500">9:24 AM</p>
             </div>
           </div>
           <div class="flex flex-row-reverse gap-3">
@@ -945,23 +974,23 @@
               alt="Sarah"
               class="h-8 w-8 shrink-0 rounded-full"
             />
-            <div class="rounded-2xl rounded-tl-sm border border-slate-100 bg-white p-3 shadow-sm">
-              <p class="text-sm text-slate-700">
+            <div class="rounded-2xl rounded-tl-sm border border-slate-100 bg-white p-3 shadow-sm dark:border-transparent dark:bg-dark-card">
+              <p class="text-sm text-slate-700 dark:text-stone-300">
                 Awesome! Let's discuss it in the team sync later.
               </p>
-              <p class="mt-1 text-right text-[10px] text-slate-400">9:28 AM</p>
+              <p class="mt-1 text-right text-[10px] text-slate-400 dark:text-stone-500">9:28 AM</p>
             </div>
           </div>
         </div>
-        <div class="z-10 border-t border-slate-100 bg-white p-4">
-          <div class="flex items-center gap-2 rounded-xl bg-slate-100 px-3 py-2">
-            <button class="p-1 text-slate-400 transition-colors hover:text-brand-600">
+        <div class="z-10 border-t border-slate-100 bg-white p-4 dark:border-transparent dark:bg-dark-card">
+          <div class="flex items-center gap-2 rounded-xl bg-slate-100 px-3 py-2 dark:bg-dark-hover">
+            <button class="p-1 text-slate-400 transition-colors hover:text-brand-600 dark:hover:text-brand-400">
               <i class="hgi-stroke hgi-attachment-01 text-lg"></i>
             </button>
             <input
               type="text"
               placeholder="Type a message..."
-              class="flex-1 border-none bg-transparent text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none"
+              class="flex-1 border-none bg-transparent text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none dark:text-stone-200"
             />
             <button
               class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-600 text-white transition-colors hover:bg-brand-700"
