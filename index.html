@@ -24,7 +24,7 @@
     @apply inline-flex items-center gap-2 rounded-full bg-brand-50 px-2.5 py-1 text-[10.5px] font-bold uppercase tracking-wider text-brand-600;  }
 
   .feature-card {
-    @apply rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md;
+    @apply rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-transparent dark:bg-dark-card dark:hover:shadow-none;
   }
 
   .nav-link {
@@ -80,6 +80,10 @@
     backdrop-filter: blur(6px);
   }
   
+  .dark .nav-glass {
+    background: rgba(2, 6, 23, 0.85);
+  }
+
   .nav-transparent {
     background: transparent;
   }
@@ -95,13 +99,13 @@
   #mobileMenu.open { max-height: 400px; opacity: 1; }
     </style>
   </head>
-  <body class="bg-slate-50 font-sans text-slate-900 antialiased selection:bg-brand-100 selection:text-brand-900">
+  <body class="bg-slate-50 font-sans text-slate-900 antialiased selection:bg-brand-100 selection:text-brand-900 dark:bg-dark-bg dark:text-stone-50 dark:selection:bg-brand-900/30 dark:selection:text-brand-100">
 
     <nav id="navbar" class="nav-transparent fixed left-0 right-0 top-0 z-50 transition-all duration-300">
       <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
         <a href="#" class="flex items-center gap-2.5">
           <img src="./assets/svg/logo.svg" alt="GeizAdmin" class="h-11 w-11" />
-          <span class="text-xl font-extrabold tracking-tight text-slate-800">Geiz<span class="text-brand-600">Admin</span></span>
+          <span class="text-xl font-extrabold tracking-tight text-slate-800 dark:text-stone-100">Geiz<span class="text-brand-600 dark:text-brand-500">Admin</span></span>
         </a>
 
         <div class="hidden items-center gap-8 md:flex">
@@ -132,12 +136,12 @@
           </span>
         </div>
 
-        <h1 class="fade-up delay-100 mx-auto max-w-4xl text-center text-5xl font-bold leading-[1.1] tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
+        <h1 class="fade-up delay-100 mx-auto max-w-4xl text-center text-5xl font-bold leading-[1.1] tracking-tight text-slate-900 sm:text-6xl lg:text-7xl dark:text-stone-100">
           The Admin Dashboard<br />
           <span class="gradient-text">Built to Impress</span>
         </h1>
 
-        <p class="fade-up delay-200 mx-auto mt-6 max-w-2xl text-center text-lg text-slate-500">
+        <p class="fade-up delay-200 mx-auto mt-6 max-w-2xl text-center text-lg text-slate-500 dark:text-stone-400">
           GeizAdmin is a free, beautifully designed admin template built with Tailwind CSS and Hugeicons. Fully responsive, dark-mode ready, and packed with 7 pages and 80+ components.
         </p>
 
@@ -151,7 +155,7 @@
           </a>
           <a
             href="#downloads"
-            class="flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm border border-slate-200 transition-all hover:bg-slate-50 hover:shadow-md active:scale-95"
+            class="flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm border border-slate-200 transition-all hover:bg-slate-50 hover:shadow-md active:scale-95 dark:bg-dark-card dark:border-transparent dark:text-stone-300 dark:hover:bg-dark-hover"
           >
             <i class="hgi-stroke hgi-download-04 text-lg"></i>
             Download Options
@@ -181,24 +185,24 @@
       </div>
     </section>
 
-    <section id="downloads" class="bg-white py-24 border-t border-slate-100">
+    <section id="downloads" class="bg-white py-24 border-t border-slate-100 dark:bg-dark-bg dark:border-transparent">
       <div class="mx-auto max-w-7xl px-6 lg:px-10">
         <div class="mb-12 text-center fade-up">
           <span class="section-label">Choose your stack</span>
-          <h2 class="mt-4 text-4xl font-extrabold tracking-tight text-slate-900">
+          <h2 class="mt-4 text-4xl font-extrabold tracking-tight text-slate-900 dark:text-stone-100">
             Download GeizAdmin
           </h2>
-          <p class="mt-4 text-lg text-slate-500">Available in multiple formats to fit your workflow.</p>
+          <p class="mt-4 text-lg text-slate-500 dark:text-stone-400">Available in multiple formats to fit your workflow.</p>
         </div>
 
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           <div class="feature-card fade-up delay-300 flex flex-col ring-2 ring-brand-500 ring-offset-2 relative overflow-hidden">
             <div class="absolute right-0 top-0 rounded-bl-xl bg-brand-600 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white">Recommended</div>
-            <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
+            <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 dark:bg-brand-500/10 dark:text-brand-400">
               <img src="/assets/images/tailwind.png" alt="icon" class="h-10 w-10" />
             </div>
-            <h3 class="mb-2 text-xl font-bold text-slate-900">HTML + Tailwind</h3>
-            <p class="mb-6 flex-1 text-sm text-slate-500">The core template. Open `index.html` in your browser and you're good to go. No npm install needed.</p>
+            <h3 class="mb-2 text-xl font-bold text-slate-900 dark:text-stone-100">HTML + Tailwind</h3>
+            <p class="mb-6 flex-1 text-sm text-slate-500 dark:text-stone-400">The core template. Open `index.html` in your browser and you're good to go. No npm install needed.</p>
             <button onclick="downloadFile(
               'https://github.com/fahmirizalbudi/geiz/releases/download/v1.0.0/geiz-html-tailwind.zip',
               'geiz-html-tailwind.zip'
@@ -208,34 +212,34 @@
           </div>
 
           <div class="feature-card fade-up delay-200 flex flex-col">
-            <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-50 text-red-600">
+            <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400">
               <img src="/assets/images/laravel.png" alt="icon" class="h-10 w-10" />
             </div>
-            <h3 class="mb-2 text-xl font-bold text-slate-900">Laravel Blade</h3>
-            <p class="mb-6 flex-1 text-sm text-slate-500">Pre-spilt Blade components and layouts. Ready to be integrated into your Laravel TALL stack.</p>
-            <a href="#" class="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-400 cursor-not-allowed">
+            <h3 class="mb-2 text-xl font-bold text-slate-900 dark:text-stone-100">Laravel Blade</h3>
+            <p class="mb-6 flex-1 text-sm text-slate-500 dark:text-stone-400">Pre-spilt Blade components and layouts. Ready to be integrated into your Laravel TALL stack.</p>
+            <a href="#" class="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-400 cursor-not-allowed dark:bg-dark-hover dark:text-stone-500">
               <i class="hgi-stroke hgi-clock-01"></i> Coming Soon
             </a>
           </div>
 
           <div class="feature-card fade-up delay-200 flex flex-col">
-            <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-50 text-red-600">
+            <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400">
               <img src="/assets/images/next.png" alt="icon" class="h-10 w-10" />
             </div>
-            <h3 class="mb-2 text-xl font-bold text-slate-900">React (Next.js)</h3>
-            <p class="mb-6 flex-1 text-sm text-slate-500">Fully typed React components. Designed for Next.js App Router with separated UI components.</p>
-            <a href="#" class="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-400 cursor-not-allowed">
+            <h3 class="mb-2 text-xl font-bold text-slate-900 dark:text-stone-100">React (Next.js)</h3>
+            <p class="mb-6 flex-1 text-sm text-slate-500 dark:text-stone-400">Fully typed React components. Designed for Next.js App Router with separated UI components.</p>
+            <a href="#" class="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-400 cursor-not-allowed dark:bg-dark-hover dark:text-stone-500">
               <i class="hgi-stroke hgi-clock-01"></i> Coming Soon
             </a>
           </div>
 
           <div class="feature-card fade-up flex flex-col" style="animation-delay: 0.4s">
-            <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
+            <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400">
               <img src="/assets/images/nuxt.png" alt="icon" class="h-10 w-10" />
             </div>
-            <h3 class="mb-2 text-xl font-bold text-slate-900">Vue 3 (Nuxt)</h3>
-            <p class="mb-6 flex-1 text-sm text-slate-500">Composition API ready Vue components for your Nuxt or Vite projects.</p>
-            <a href="#" class="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-50 px-4 py-2.5 text-sm font-semibold text-slate-400 cursor-not-allowed">
+            <h3 class="mb-2 text-xl font-bold text-slate-900 dark:text-stone-100">Vue 3 (Nuxt)</h3>
+            <p class="mb-6 flex-1 text-sm text-slate-500 dark:text-stone-400">Composition API ready Vue components for your Nuxt or Vite projects.</p>
+            <a href="#" class="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-50 px-4 py-2.5 text-sm font-semibold text-slate-400 cursor-not-allowed dark:bg-dark-hover dark:text-stone-500">
               <i class="hgi-stroke hgi-clock-01"></i> Coming Soon
             </a>
           </div>
@@ -243,7 +247,7 @@
       </div>
     </section>
 
-    <footer class="bg-white py-12">
+    <footer class="bg-white py-12 dark:bg-dark-bg">
       <div class="mx-auto max-w-7xl px-6 lg:px-10">
         <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div class="flex items-center gap-4">
@@ -253,23 +257,23 @@
               class="h-12 w-12 rounded-full border border-slate-200 shadow-sm"
             />
             <div>
-              <h3 class="text-[15px] font-bold text-slate-900">Fahmirizal Budi Ramadhan</h3>
-              <p class="text-[13.5px] text-slate-500">Fullstack Developer</p>
+              <h3 class="text-[15px] font-bold text-slate-900 dark:text-stone-100">Fahmirizal Budi Ramadhan</h3>
+              <p class="text-[13.5px] text-slate-500 dark:text-stone-400">Fullstack Developer</p>
             </div>
           </div>
 
-          <div class="flex flex-wrap items-center justify-center gap-4 text-sm font-medium text-slate-600">
-            <a href="mailto:me@fahmirizalbudi.dev" class="flex items-center gap-2 transition-colors hover:text-brand-600">
+          <div class="flex flex-wrap items-center justify-center gap-4 text-sm font-medium text-slate-600 dark:text-stone-400">
+            <a href="mailto:me@fahmirizalbudi.dev" class="flex items-center gap-2 transition-colors hover:text-brand-600 dark:hover:text-brand-400">
               <i class="hgi-stroke hgi-mail-01 text-lg"></i>
               Email
             </a>
-            <span class="h-4 w-px bg-slate-200"></span>
-            <a href="https://github.com/fahmirizalbudi" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 transition-colors hover:text-brand-600">
+            <span class="h-4 w-px bg-slate-200 dark:bg-dark-hover"></span>
+            <a href="https://github.com/fahmirizalbudi" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 transition-colors hover:text-brand-600 dark:hover:text-brand-400">
               <i class="hgi-stroke hgi-github text-lg"></i>
               GitHub
             </a>
-            <span class="h-4 w-px bg-slate-200"></span>
-            <a href="dashboard/index.html" class="flex items-center gap-2 transition-colors hover:text-brand-600">
+            <span class="h-4 w-px bg-slate-200 dark:bg-dark-hover"></span>
+            <a href="dashboard/index.html" class="flex items-center gap-2 transition-colors hover:text-brand-600 dark:hover:text-brand-400">
               <i class="hgi-stroke hgi-computer text-lg"></i>
               Demo
             </a>
