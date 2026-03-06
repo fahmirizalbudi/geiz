@@ -163,7 +163,30 @@
     }
   }
 
-    </style>
+        /* Sidebar Collapse Gaps & Dividers (Ultra Tight) */
+  aside.w-20 .flex.flex-col.gap-8 {
+    gap: 0.25rem !important; /* Extremely small gap between sections */
+  }
+  aside.w-20 .sidebar-text {
+    display: none !important; /* Remove titles from flow entirely */
+  }
+  aside.w-20 .space-y-2 {
+    space-y: 0 !important; /* Remove link spacing */
+  }
+  aside.w-20 .space-y-2 > * + * {
+    margin-top: 0.125rem !important; /* Tightest link stacking */
+  }
+  .sidebar-divider {
+    display: none;
+    margin: 0 auto;
+  }
+  aside.w-20 .sidebar-divider {
+    display: block;
+    padding: 0 !important;
+    margin: 0.25rem auto !important;
+  }
+
+</style>
     <style>
   /* Collapsed Sidebar Rules */
   aside.w-20 {
@@ -246,7 +269,30 @@
     width: 12rem !important;
     bottom: 100% !important;
   }
-    </style>
+        /* Sidebar Collapse Gaps & Dividers (Ultra Tight) */
+  aside.w-20 .flex.flex-col.gap-8 {
+    gap: 0.25rem !important; /* Extremely small gap between sections */
+  }
+  aside.w-20 .sidebar-text {
+    display: none !important; /* Remove titles from flow entirely */
+  }
+  aside.w-20 .space-y-2 {
+    space-y: 0 !important; /* Remove link spacing */
+  }
+  aside.w-20 .space-y-2 > * + * {
+    margin-top: 0.125rem !important; /* Tightest link stacking */
+  }
+  .sidebar-divider {
+    display: none;
+    margin: 0 auto;
+  }
+  aside.w-20 .sidebar-divider {
+    display: block;
+    padding: 0 !important;
+    margin: 0.25rem auto !important;
+  }
+
+</style>
   </head>
   <body
     class="flex h-dvh w-full overflow-hidden bg-slate-50 font-sans text-slate-900 selection:bg-brand-100 selection:text-brand-900 dark:bg-dark-bg dark:text-stone-50 dark:selection:bg-brand-900/30 dark:selection:text-brand-100 delay-0"
@@ -270,6 +316,7 @@
             <p class="sidebar-text mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 transition-opacity duration-300 whitespace-nowrap overflow-hidden dark:text-stone-500">
               Overview
             </p>
+            <i class="hgi-stroke hgi-more-horizontal sidebar-divider text-xl text-slate-400 transition-opacity duration-300 dark:text-stone-500"></i>
             <a href="/dashboard/index.html" class="sidebar-link">
               <i class="hgi-stroke hgi-home-01 text-lg"></i>
               <span class="sidebar-text transition-opacity duration-300 whitespace-nowrap overflow-hidden">Dashboard</span>
@@ -284,6 +331,7 @@
             <p class="sidebar-text mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 transition-opacity duration-300 whitespace-nowrap overflow-hidden dark:text-stone-500">
               Pages
             </p>
+            <i class="hgi-stroke hgi-more-horizontal sidebar-divider text-xl text-slate-400 transition-opacity duration-300 dark:text-stone-500"></i>
             <a href="/dashboard/ecommerce.html" class="sidebar-link">
               <i class="hgi-stroke hgi-shopping-cart-01 text-lg"></i>
               <span class="sidebar-text transition-opacity duration-300 whitespace-nowrap overflow-hidden">E-Commerce</span>
@@ -310,6 +358,7 @@
             <p class="sidebar-text mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 transition-opacity duration-300 whitespace-nowrap overflow-hidden dark:text-stone-500">
               Components
             </p>
+            <i class="hgi-stroke hgi-more-horizontal sidebar-divider text-xl text-slate-400 transition-opacity duration-300 dark:text-stone-500"></i>
             <a href="/dashboard/components.html" class="sidebar-link active">
               <i class="hgi-stroke hgi-grid-view text-lg"></i>
               <span class="sidebar-text transition-opacity duration-300 whitespace-nowrap overflow-hidden">Components</span>
@@ -320,6 +369,7 @@
             <p class="sidebar-text mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 transition-opacity duration-300 whitespace-nowrap overflow-hidden dark:text-stone-500">
               Credits
             </p>
+            <i class="hgi-stroke hgi-more-horizontal sidebar-divider text-xl text-slate-400 transition-opacity duration-300 dark:text-stone-500"></i>
             <a href="/dashboard/credits.html" class="sidebar-link">
               <i class="hgi-stroke hgi-certificate-01 text-lg"></i>
               <span class="sidebar-text transition-opacity duration-300 whitespace-nowrap overflow-hidden">Credits</span>

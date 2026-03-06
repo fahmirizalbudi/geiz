@@ -71,7 +71,30 @@
     background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(37, 99, 235, 0.12), transparent);
   }
 }
-    </style>
+        /* Sidebar Collapse Gaps & Dividers (Ultra Tight) */
+  aside.w-20 .flex.flex-col.gap-8 {
+    gap: 0.25rem !important; /* Extremely small gap between sections */
+  }
+  aside.w-20 .sidebar-text {
+    display: none !important; /* Remove titles from flow entirely */
+  }
+  aside.w-20 .space-y-2 {
+    space-y: 0 !important; /* Remove link spacing */
+  }
+  aside.w-20 .space-y-2 > * + * {
+    margin-top: 0.125rem !important; /* Tightest link stacking */
+  }
+  .sidebar-divider {
+    display: none;
+    margin: 0 auto;
+  }
+  aside.w-20 .sidebar-divider {
+    display: block;
+    padding: 0 !important;
+    margin: 0.25rem auto !important;
+  }
+
+</style>
     <style>
   html { scroll-padding-top: 80px; }
 
@@ -97,7 +120,30 @@
 
   #mobileMenu { transition: max-height 0.3s ease, opacity 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
   #mobileMenu.open { max-height: 400px; opacity: 1; }
-    </style>
+        /* Sidebar Collapse Gaps & Dividers (Ultra Tight) */
+  aside.w-20 .flex.flex-col.gap-8 {
+    gap: 0.25rem !important; /* Extremely small gap between sections */
+  }
+  aside.w-20 .sidebar-text {
+    display: none !important; /* Remove titles from flow entirely */
+  }
+  aside.w-20 .space-y-2 {
+    space-y: 0 !important; /* Remove link spacing */
+  }
+  aside.w-20 .space-y-2 > * + * {
+    margin-top: 0.125rem !important; /* Tightest link stacking */
+  }
+  .sidebar-divider {
+    display: none;
+    margin: 0 auto;
+  }
+  aside.w-20 .sidebar-divider {
+    display: block;
+    padding: 0 !important;
+    margin: 0.25rem auto !important;
+  }
+
+</style>
   </head>
   <body class="bg-slate-50 font-sans text-slate-900 antialiased selection:bg-brand-100 selection:text-brand-900 dark:bg-dark-bg dark:text-stone-50 dark:selection:bg-brand-900/30 dark:selection:text-brand-100">
 
