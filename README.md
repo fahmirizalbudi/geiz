@@ -31,7 +31,7 @@ GeizAdmin is a free, beautifully designed admin template built with Tailwind CSS
 
 ## Tech Stack
 
-- **Tailwind CSS**: Utility-first CSS framework for rapid UI development.
+- **Tailwind CSS v4**: Utility-first CSS framework for rapid UI development.
 - **Hugeicons**: Premium stroke-rounded icon library for a clean look.
 - **Vanilla JavaScript**: Lightweight interactivity without the weight of heavy frameworks.
 
