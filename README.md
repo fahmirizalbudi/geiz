@@ -27,7 +27,7 @@ GeizAdmin is a free, beautifully designed admin template built with Tailwind CSS
 - **Premium Design:** Curated color palettes, modern typography, and sleek glassmorphism effects.
 - **Fully Responsive:** Works seamlessly across mobile, tablet, and desktop viewports.
 - **Zero Dependency:** Pure HTML and Tailwind CSS. No `npm install` or complex build tools required.
-- **Rich Components:** Packed with 80+ UI components and 7+ specialized dashboard pages.
+- **Rich Components:** Packed with 20+ UI components and 7+ specialized dashboard pages.
 
 ## Tech Stack
 
