@@ -58,7 +58,7 @@ You can also download the source code directly from our [Releases page](https://
 
 ### 2. Customization
 
-Customize the theme by modifying `assets/js/tailwind-config.js`. This allows you to update the primary brand colors and typography system universally.
+Customize the theme by modifying `assets/js/tailwind-config.js`. This allows you to update the primary brand colors and typography system.
 
 ## Documentation
 
