@@ -19,7 +19,7 @@ GeizAdmin is a free, beautifully designed admin template built with Tailwind CSS
 
 ## Preview
 
-![GeizAdmin Preview](./mockup.png)
+![GeizAdmin Preview](./preview.png)
 
 ## Features
 
