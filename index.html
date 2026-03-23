@@ -113,7 +113,7 @@
             class="flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-brand-500/20 transition-all hover:bg-brand-700 active:scale-95"
           >
             <i class="hgi-stroke hgi-github text-base"></i>
-            Contribute
+            Star on GitHub
           </a>
         </div>
       </div>
@@ -199,7 +199,7 @@
             </div>
             <h3 class="mb-2 text-xl font-bold text-slate-900">HTML + Tailwind</h3>
             <p class="mb-6 flex-1 text-sm text-slate-500">The core template. Open `index.html` in your browser and you're good to go. No npm install needed.</p>
-            <a href="https://github.com/fahmirizalbudi/geiz/releases" class="flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-700">
+            <a href="#" id="btnDownloadHtml" class="flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-700">
               <i class="hgi-stroke hgi-download-04"></i> Get HTML Version
             </a>
           </div>
@@ -317,6 +317,61 @@
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
+      }
+    </script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+      import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-analytics.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyCueRojMPBSrGQcW6iXf-XWA6BxkFjeI5c",
+        authDomain: "geiz-e377c.firebaseapp.com",
+        projectId: "geiz-e377c",
+        storageBucket: "geiz-e377c.firebasestorage.app",
+        messagingSenderId: "450407240805",
+        appId: "1:450407240805:web:8bf1f63c23c92afe0e628c",
+        measurementId: "G-93V9LPW8K9"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+
+      const btnDownloadHtml = document.getElementById('btnDownloadHtml');
+      if (btnDownloadHtml) {
+        btnDownloadHtml.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          // Log Firebase Analytics Event
+          logEvent(analytics, 'click_download_html', {
+            method: 'button_click'
+          });
+
+          const originalHTML = btnDownloadHtml.innerHTML;
+          
+          btnDownloadHtml.classList.add('opacity-80');
+          btnDownloadHtml.style.pointerEvents = 'none';
+
+          let timeLeft = 3;
+          btnDownloadHtml.innerHTML = `<i class="hgi-stroke hgi-loading w-4 h-4 animate-spin"></i> Starting in ${timeLeft}s`;
+          
+          const timerInterval = setInterval(() => {
+            timeLeft -= 1;
+            if (timeLeft > 0) {
+              btnDownloadHtml.innerHTML = `<i class="hgi-stroke hgi-loading w-4 h-4 animate-spin"></i> Starting in ${timeLeft}s`;
+            } else {
+              clearInterval(timerInterval);
+              btnDownloadHtml.innerHTML = `<i class="hgi-stroke hgi-checkmark-circle-01 text-white"></i> Starting Download...`;
+              
+              window.location.href = 'https://github.com/fahmirizalbudi/geiz/releases/download/v1.1.0/geiz-html-tailwind.zip';
+              
+              setTimeout(() => {
+                btnDownloadHtml.innerHTML = originalHTML;
+                btnDownloadHtml.classList.remove('opacity-80');
+                btnDownloadHtml.style.pointerEvents = 'auto';
+              }, 2000);
+            }
+          }, 1000);
+        });
       }
     </script>
   </body>
